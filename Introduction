@@ -1,0 +1,9 @@
+程式碼:
+一、首先 class ucb_bandit 可以設置主要的 ucb 物件與環境，並創建主要的演算 程式。詳細內容可參閱程式碼中註解。
+二、valuation_nu_generater、customer_simulation 兩個 method 主要是用來設計實 驗環境的，valuation_nu_generater可設置各個customer segments 的 valuation midpoint，
+此內建四種 beta distribution，和一種離散分佈，比照論 文中的分佈與參數。customer_simulation 可以設置消費者前來的頻率，並在已知的 segment 內隨機生成異質性落在正負 delta 之間，
+因論文沒特別描述 segment 的分佈，default 值設定為 uniform distribution。
+三、Pull method 則是主要的學習過程，當消費者來後，會訂出最適價格，並根據環境的改變記憶新資訊。此處變數可以設定原本 UCB、或是論文中的版本、是否考慮 partial identification、以及超參數常數 c。本文末段會比較三 者結果。
+四、Run method 則是可以一次執行一連串上述的活動，以模擬長期的實驗 五、Reset 會重置需要經過學習才會得到的參數
+六、Regret 則是計算 pull 中所採用的策略，相較於期望最佳利潤 loss 的比率。也是 MAB 問題中最常見用來衡量結果的 metrics。
+七、實驗結束後可將參數列出供詳細的分析。
